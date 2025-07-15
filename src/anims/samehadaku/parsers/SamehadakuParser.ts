@@ -632,7 +632,8 @@ export default class SamehadakuParser extends SamehadakuParserExtra {
         }),
       },
       (response) => {
-        if (!response.data) setResponseError(400);
+        const res = response as { data?: any };
+        if (!res.data) setResponseError(400);
       }
     );
 

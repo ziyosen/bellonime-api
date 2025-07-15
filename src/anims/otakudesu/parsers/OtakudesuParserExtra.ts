@@ -210,7 +210,7 @@ export default class OtakudesuParserExtra extends AnimeScraper {
             }
 
             const originalUrls = await getFinalUrls(otakudesuUrls, this.baseUrl, {
-              axiosConfig: { timeout: 10000 },
+              
               retryConfig: { delay: 100, retries: 2 },
             });
 

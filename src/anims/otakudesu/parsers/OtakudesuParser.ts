@@ -431,7 +431,7 @@ export default class OtakudesuParser extends OtakudesuParserExtra {
             }),
           });
 
-          if (nonce?.data) cache.set(nonceCacheKey, nonce.data);
+          if (nonce) cache.set(nonceCacheKey, nonce);
         }
 
         serverElements.forEach((serverElement) => {
@@ -583,7 +583,7 @@ export default class OtakudesuParser extends OtakudesuParserExtra {
       const nonce = cache.get(nonceCacheKey);
       const url = await getUrlData(nonce);
 
-      data.url = getUrl(getHtml(url.data));
+      data.url = getUrl(getHtml(url));
     } catch (error: any) {
       if (error.status === 403) {
         // MISS
@@ -595,12 +595,12 @@ export default class OtakudesuParser extends OtakudesuParserExtra {
           }),
         });
 
-        if (nonce?.data) {
-          cache.set(nonceCacheKey, nonce.data);
+        if (nonce) {
+          cache.set(nonceCacheKey, nonce);
 
-          const response = await getUrlData(nonce.data);
+          const response = await getUrlData(nonce);
 
-          data.url = getUrl(getHtml(response.data));
+          data.url = getUrl(getHtml(response));
         }
       } else {
         throw error;
