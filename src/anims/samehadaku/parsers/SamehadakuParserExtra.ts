@@ -177,7 +177,9 @@ export default class SamehadakuParserExtra extends AnimeScraper {
 
   protected parseAnimeCard2List($: CheerioAPI, to: "anime" | "batch"): ISP.Animes["data"] {
     const data: ISP.Animes["data"] = { animeList: [] };
-    const animeElements = $(".animpost .animepost").toArray();
+    /* v2.samehadaku.how memakai .animepost langsung (tanpa wrapper .animpost seperti v1).
+       Dukung keduanya supaya kompatibel v1 & v2. */
+    const animeElements = $(".animpost .animepost, .animepost").toArray();
 
     animeElements.forEach((animeElement) => {
       const card = this.parseAnimeCard2($, $(animeElement), to);
