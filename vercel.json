@@ -1,7 +1,18 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.js" }]
+ "version": 2,
+ "builds": [
+  {
+   "src": "dist/index.js",
+   "use": "@vercel/node",
+   "config": {
+    "includeFiles": "node_modules/**"
+   }
+  }
+ ],
+ "routes": [
+  {
+   "src": "/(.*)",
+   "dest": "dist/index.js"
+  }
+ ]
 }
